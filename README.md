@@ -1,2 +1,2 @@
-# adivinar-Numero
-Se va utilizar numeros random
+# Adivinar-Numero
+Se va a utilizar numeros aleatorios.
