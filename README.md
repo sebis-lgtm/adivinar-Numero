@@ -1,2 +1,8 @@
-# Adivinar-Numero
-Se va a utilizar numeros aleatorios.
+# adivinar-Numero
+
+# Publico Objetivo
+
+- Un usuario
+- Por consola
+
+Efectivamente esto es un cambio
