@@ -10,3 +10,5 @@ class puntaje():
     pass
 
 
+#esto esta mal
+
