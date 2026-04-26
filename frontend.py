@@ -29,7 +29,6 @@ def finish_game(result, number):
         print("GANASTE!!!")
     else:
         print(f"FALLASTE EL NUMERO ERA -> {number}")
-    exit
 
 def iteration(number):
     oportunities = 3
@@ -37,7 +36,7 @@ def iteration(number):
         number_select = input_number()
         if number_select == number:
             finish_game(True, number)
-            break
+            return
         elif number_select > number:
             print("El número es menor")
         else: 
@@ -49,4 +48,5 @@ def iteration(number):
 def start():
     menu()
 
-start()
+if __name__ == "__main__":
+    start()
