@@ -1,2 +1,8 @@
 # adivinar-Numero
-Se va utilizar numeros random
+
+# Publico Objetivo
+
+- Un usuario
+- Por consola
+
+Efectivamente esto es un cambio
