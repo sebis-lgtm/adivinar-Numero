@@ -1,13 +1,22 @@
-#No probe con numeros negativos todavia xde
-#Tengo que hacer que si no introducen algo que no es un numero salga un aviso.
-
 import random
+
+def pedir_numero(mensaje):
+    while True:
+        try:
+            numero = int(input(mensaje))
+            return numero
+        except ValueError:
+            print("Por favor, introducir un número.")
 
 def intervalo():
     print("Elige tu intervalo:")
-    NumInferior = int(input("Numero menor:"))
-    NumSuperior = int(input("Numero mayor:"))
-    return NumInferior,NumSuperior
+    NumInferior = pedir_numero("Numero Inferior: ")
+    while True:
+        NumSuperior = pedir_numero("Numero Superior: ")
+        if NumSuperior <= NumInferior:
+            print("El número superior debe ser mayor al primer número.")
+        else:
+            return NumInferior,NumSuperior
 minimo,maximo = intervalo()
 
 
@@ -18,23 +27,27 @@ numale = numeroAleatorio(minimo,maximo)
 
 
 def adivina():
-    print("¿Cual es el numero?")
-    NumAdi = int(input())
-    if NumAdi < minimo:
-        print("Escoger un numero dentro del rango.")
-        adivina()
-    if NumAdi > maximo:
-        print("Escoger un numero dentro del rango.")
-        adivina()
-    return NumAdi
+    print("¿Cual es el número?")
+    while True:
+        NumAdi = pedir_numero("")
+        if NumAdi < minimo:
+            print("Escoger un número dentro del rango.")
+        elif NumAdi > maximo:
+            print("Escoger un número dentro del rango.")
+        elif minimo <= NumAdi <= maximo:
+            return NumAdi
 
 def cercania(adi, minimo, maximo, numale):
-    if minimo <= adi < numale:
-        porcentaje =int(((adi-minimo)*100/(numale-minimo)))
-    elif numale < adi <= maximo:
-        porcentaje =int(((maximo-adi)*100/(maximo-numale)))
-    elif adi == numale:
+    if adi == numale:
         porcentaje = 100
+    elif numale == minimo:
+        porcentaje = int(abs(maximo-adi)*100/abs(maximo-minimo))
+    elif numale == maximo:
+        porcentaje = int(abs(adi-minimo)*100/abs(maximo-minimo))
+    elif minimo <= adi < numale:
+        porcentaje =int((abs(adi-minimo)*100/abs(numale-minimo)))
+    elif numale < adi <= maximo:
+        porcentaje =int((abs(maximo-adi)*100/abs(maximo-numale)))
     return porcentaje
 
 
@@ -45,7 +58,7 @@ while True:
     if adi == numale:
         break
     porcentajes.append(resultado)
-    print(f"Tu numero esta correcto en un {resultado}%")
+    print(f"Tu numero esta correcto en un {resultado}%.")
 
 Total_intentos = len(porcentajes)
 puntajeinicial = 0
@@ -54,4 +67,4 @@ for indice,porcentaje in enumerate(porcentajes):
     puntajeinicial = puntajeinicial + puntaje
 
 PuntajeTotal = puntajeinicial + 100/2**(Total_intentos)
-print(PuntajeTotal)
+print(f"Correcto, tu puntaje es: {"%0.2f"%(PuntajeTotal)}.")
